@@ -1,38 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 
-const UserCard = ({ user: { firstName, lastName, image } }) => (
-  <div className="user-card">
-    <img src={image} alt={firstName} />
-    <h2>
-      {firstName}
-      {lastName}
-    </h2>
-  </div>
-);
-
-const Button = ({ text, onClick, style }) => {
+const Button = ({ text, onClick, style }) => (
   <button style={style} onClick={onClick}>
     {text}
-  </button>;
-};
+  </button>
+);
 
+// CSS styles in JavaScript Object
 const buttonStyles = {
   backgroundColor: "#61dbfb",
   padding: 10,
   border: "none",
   borderRadius: 5,
-  margin: 3,
+  margin: "3px auto",
   cursor: "pointer",
-  fontSize: 18,
+  fontSize: 22,
   color: "white",
 };
 
+// class based component
 class Header extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const {
       welcome,
@@ -58,18 +46,37 @@ class Header extends React.Component {
   }
 }
 
-class TechList extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+class App extends React.Component {
+  state = {
+    loggedIn: false,
+  };
+
+  handleClick = () => {
+    this.setState({
+      loggedIn: !this.state.loggedIn
+    });
+  };
+
   render() {
-    const { techs } = this.props
-    const techsFormatted = techs.map((tech) => <li key={tech}>{tech}</li>)
-    return techsFormatted
+    const data = {
+      welcome: "30 Days Of React",
+      title: "Getting Started React",
+      subtitle: "JavaScript Library",
+      author: {
+        firstName: "Asabeneh",
+        lastName: "Yetayeh",
+      },
+      date: "Oct 9, 2020",
+    };
+
+    let status = this.state.loggedIn ? <h1>Hola mina-san</h1> : <h2>Log In First</h2>;
+    return <div className="home-wrapper">
+      <Header data={data}/>
+      {status}
+      <Button text={this.state.loggedIn ? 'Log Out': 'Log In'} style={buttonStyles} onClick={this.handleClick}/>
+    </div>;
   }
 }
-
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
