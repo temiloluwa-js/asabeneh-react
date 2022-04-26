@@ -1,13 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-class Header extends React.Component{
+class TechList extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render(){
-    return(
-      <div>
-        <h1>Class components</h1>
-      </div>
-    )
+    const techs = ['HTML', 'CSS', 'JavaScript']
+    const techsformatted = techs.map((tech) => <li key={tech}>{tech}</li>)
+    return techsformatted
   }
 }
 
