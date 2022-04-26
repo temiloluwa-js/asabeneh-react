@@ -1,49 +1,75 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-class Header extends React.Component{
-  constructor(props){
-    super(props)
+
+const UserCard = ({ user: { firstName, lastName, image } }) => (
+  <div className="user-card">
+    <img src={image} alt={firstName} />
+    <h2>
+      {firstName}
+      {lastName}
+    </h2>
+  </div>
+);
+
+const Button = ({ text, onClick, style }) => {
+  <button style={style} onClick={onClick}>
+    {text}
+  </button>;
+};
+
+const buttonStyles = {
+  backgroundColor: "#61dbfb",
+  padding: 10,
+  border: "none",
+  borderRadius: 5,
+  margin: 3,
+  cursor: "pointer",
+  fontSize: 18,
+  color: "white",
+};
+
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
   }
 
-  render(){
+  render() {
     const {
       welcome,
       title,
-      author: {firstName, lastName},
-      date
-    } = this.props.data
+      subtitle,
+      author: { firstName, lastName },
+      date,
+    } = this.props.data;
+
     return (
       <header>
         <div className="header-wrapper">
           <h1>{welcome}</h1>
           <h2>{title}</h2>
-          <h3>{firstName} {lastName}</h3>
+          <h3>{subtitle}</h3>
+          <p>
+            {firstName} {lastName}
+          </p>
           <small>{date}</small>
         </div>
       </header>
-    )
+    );
   }
-
 }
 
-const App = () => {
-  const data = {
-   welcome: 'Welcome to learning JS',
-   title: 'Getting Started React',
-   subtitle: 'JavaScript Library',
-   author: {
-     firstName: 'Asabeneh',
-     lastName: 'Yetayeh'
-   },
-   date: 'Oct 7, 2020'
+class TechList extends React.Component {
+  constructor(props) {
+    super(props)
   }
-
-  return(
-    <div className="app">
-      <Header data={data}/>
-    </div>
-  )
+  render() {
+    const { techs } = this.props
+    const techsFormatted = techs.map((tech) => <li key={tech}>{tech}</li>)
+    return techsFormatted
+  }
 }
+
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
