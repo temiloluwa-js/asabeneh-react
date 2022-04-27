@@ -1,16 +1,13 @@
-import { Component } from "react";
-import UpdatedComponent from "./WithCounter";
+import withCounter from "./withCounter"
 
-class ClickCounter extends Component{
-
+class ClickCounter extends React.Component{
     render(){
-        const {count} = this.state
         return(
-            <div>
-                <button onClick={this.incrementCount}>Clicked {count} times</button>
+            <div className="app">
+                <button>Clicked X times</button>
             </div>
         )
     }
 }
 
-export default UpdatedComponent(ClickCounter)
+export default withCounter(ClickCounter)
