@@ -1,34 +1,25 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom/client";
 
-const options = [
-  {
-    value: '',
-    label: '--Select Country--'
-  },
+class App extends Component {
+constructor(){
+  super();
+  this.state = {val: 0}
+  this.update = this.update.bind(this)
+}
 
-  {
-    value: 'Finland',
-    label: 'Finland'
-  },
+update(){
+  this.setState({val: this.state.val + 1})
+}
 
-  {
-    value: 'Norway',
-    label: 'Norway'
-  },
+componentWillMount(){
+  console.log('dada')
+}
 
-  {
-    value: 'Denmark',
-    label: 'Denmark'
-  }
-]
+componentDidMount(){
+  
+}
 
-const selectOptions = options.map(({value, label}) => {
-  <option value={value}>{label}</option>
-})
-
-class App extends React.Component{
-  state
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
