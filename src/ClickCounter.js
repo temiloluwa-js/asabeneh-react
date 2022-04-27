@@ -1,4 +1,5 @@
 import { Component } from "react";
+import UpdatedComponent from "./WithCounter";
 
 class ClickCounter extends Component{
 constructor(props){
@@ -24,4 +25,4 @@ incrementCount = () => {
     }
 }
 
-export default ClickCounter
+export default UpdatedComponent(ClickCounter)
