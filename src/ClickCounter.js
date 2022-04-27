@@ -9,3 +9,5 @@ class ClickCounter extends Component{
         )
     }
 }
+
+export default ClickCounter
