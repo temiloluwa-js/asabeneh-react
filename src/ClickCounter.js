@@ -3,9 +3,11 @@ import UpdatedComponent from "./withCounter"
 
 class ClickCounter extends React.Component{
     render(){
+        const {count, incrementCount} = this.props
+        
         return(
             <div className="app">
-                <button>Clicked X times{this.props.name}</button>
+                <button onClick={incrementCount}>Clicked {count} times</button>
             </div>
         )
     }
